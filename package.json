@@ -1,0 +1,26 @@
+{
+  "name": "e-commerce",
+  "version": "1.0.0",
+  "description": "Object-Relational Mapping (ORM), This homework13, is to generate a backend fir an e-commerce website. The technologies used are express.js API, MySQL, Sequelize, and Insomnia. The goal is to use express and MySQL with Sequelize to then seed a database and then use Insomnia to test it out.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Erik-jpg/E-commerce.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Erik-jpg/E-commerce/issues"
+  },
+  "homepage": "https://github.com/Erik-jpg/E-commerce#readme",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "mysql2": "^2.2.5",
+    "sequelize": "^6.6.5"
+  }
+}
