@@ -13,4 +13,4 @@ data for each of the routs are displayed in formatted JSON
 tests for API POST, PUT, and DELETE routs in Insomnia Core
 able to create, update, and delete data from database
 
-need: MySQL2, Sequalize, and .env
+need: Express, MySQL2, Sequalize, and .env
