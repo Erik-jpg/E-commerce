@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const {Category, Product, id} = require('../models');
+const {Category, Product, id} = require('../../models');
 
 router.get('/', async (req, res) => {
     try {
@@ -74,4 +74,4 @@ router.post('/', async (req, res) => {
     }
 });
 
-model.exports = router;
+module.exports = router;

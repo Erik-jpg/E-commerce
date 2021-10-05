@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const {Category, Product, ProductTag, Tag } = require('../models');
+const {Category, Product, ProductTag, Tag } = require('../../models');
 
 router.get('/:id', async (req, res) => {
     try {
@@ -84,7 +84,7 @@ router.put('/:id', (req, res) => {
     });
 });
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', async (req, res) => {
     try {
         const productData = await Tag.destroy({
             where: {
