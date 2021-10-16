@@ -1,13 +1,21 @@
 const router = require('express').Router();
-const {Tag, Product, ProductTag} = require('../../models');
+const {Tag, Product, ProductTag, id} = require('../../models');
 
 router.get('/', async (req, res) => {
     try {
-        const tagData = await tag.findAll({
-            include: [{ 
+        const tagData = await Tag.findAll({
+            include: [
+                { 
                 model: Product, 
                 through: ProductTag, 
-                attributes: ["product_name", "price", "stock", "category_id"]}]});
+                attributes: [
+                    "product_name",
+                    "price",
+                    "stock",
+                    "category_id"
+                ]
+            }
+        ]});
             res.status(200).json(tagData);
         } catch (error) {
             res.status(500).json(error);
@@ -16,10 +24,12 @@ router.get('/', async (req, res) => {
 
 router.put('/:id', async (req, res) =>{
     try {
-        const tagData = await tag.update(req.body, {
-            where: { id: req.params.id},
-        });
-        if (!userData[0]) {
+        const tagData = await Tag.update({
+           tag_name: req.body.tag_name,
+        },
+        {where:{ id: req.params.id }},
+        );
+        if (!tagData) {
             res.status(404).json({ message: 'Cannot find a tag with this id.' });
             return;
         }
@@ -31,8 +41,19 @@ router.put('/:id', async (req, res) =>{
 
 router.get('/:id', async (req, res) => {
     try {
-        const tagData = await Tag.findById(req.params.id, {
-            include: [{ model: Product }]
+        const tagData = await Tag.findByPk(req.params.id, {
+            include: [
+                { 
+                model: Product,
+                through: productTag,
+                attributes: [
+                    "product_name",
+                    "price",
+                    "stock",
+                    'category_id'
+                    ],
+            }
+        ]
         });
         if (!tagData) {
             res.status(404).json({ message: 'Could not find a tag with this id.'});
@@ -46,7 +67,7 @@ router.get('/:id', async (req, res) => {
 
 router.delete('/:id', async (req, res) => {
     try {
-        const tagData = await tag.destroy({
+        const tagData = await Tag.destroy({
             where: {
                 id: req.params.id
             }
